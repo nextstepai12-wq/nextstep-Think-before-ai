@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THINK BEFORE AI — تحدي NextStep AI</title>
+<meta name="description" content="فكّر. أبدع. تواصل. تجربة مجتمعية تفاعلية من NextStep AI.">
+<link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#071a44;--blue:#1f6bff;--cy:#00c9d6;--sky:#d6eaff;--tx:#12306b;--mute:#4a6a9c}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans Arabic',sans-serif;background:linear-gradient(180deg,#fff 0,#eaf5ff 45%,#d6eaff 100%);color:var(--tx);line-height:1.8}
+.en{font-family:'Space Grotesk',sans-serif;direction:ltr;unicode-bidi:isolate}
+a{color:inherit}
+.w{max-width:1100px;margin:auto;padding:0 20px}
+section{padding:clamp(56px,8vw,96px) 0}
+.alt{background:rgba(205,229,255,.55)}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.35;color:var(--navy);margin-bottom:10px}
+.sub{color:var(--mute);max-width:62ch;margin-bottom:30px}
+.btn{display:inline-block;background:linear-gradient(90deg,#1557e6,#0b8bd0);color:#fff;font:700 16px inherit;font-family:inherit;border:0;padding:12px 28px;border-radius:999px;cursor:pointer;text-decoration:none}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.ghost{display:inline-block;border:1px solid rgba(31,107,255,.4);padding:11px 24px;border-radius:999px;text-decoration:none;margin-inline-start:8px}
+:focus-visible{outline:3px solid var(--cy);outline-offset:3px}
+.c{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);border:1px solid rgba(31,107,255,.16);box-shadow:0 10px 30px rgba(31,107,255,.12);border-radius:20px;padding:24px}
+nav{position:sticky;top:0;z-index:9;background:rgba(255,255,255,.8);backdrop-filter:blur(10px);border-bottom:1px solid rgba(31,107,255,.15)}
+nav .w{display:flex;align-items:center;gap:18px;height:62px}
+nav img{height:36px}
+nav .l{margin-inline-start:auto;display:flex;gap:18px;font-size:15px}
+nav .l a{text-decoration:none;color:var(--mute)}
+nav .l a:hover{color:var(--navy)}nav .l a.btn{color:#fff}
+@media(max-width:760px){nav .l a:not(.btn){display:none}}
+.hero{padding:64px 0 48px;background:radial-gradient(ellipse at 15% 0,rgba(127,196,255,.45),transparent 55%),radial-gradient(ellipse at 90% 70%,rgba(0,201,214,.2),transparent 50%)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.2;color:var(--navy);margin:10px 0 16px}
+.hero h1 .en{display:block;font-weight:700;letter-spacing:-1px;background:linear-gradient(90deg,#0a1c47,#1f6bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{color:#0b6fc2;font-size:14px}
+.pause{text-align:center}
+.pause .bar{background:#fff;border:1px solid rgba(31,107,255,.25);color:#516080;border-radius:12px;padding:12px 16px;text-align:start;font-size:15px;margin-bottom:18px}
+.ring{position:relative;width:132px;height:132px;margin:0 auto 16px}
+.ring svg{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:8}
+.ring .bg{stroke:rgba(31,107,255,.15)}
+.ring .fg{stroke:var(--blue);stroke-linecap:round;stroke-dasharray:339;stroke-dashoffset:339;transition:stroke-dashoffset 1s linear}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font:700 40px 'Space Grotesk';color:var(--navy)}
+.pause p{color:var(--mute);font-size:14px;margin-top:12px;min-height:26px}
+.band{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+@media(max-width:700px){.band{grid-template-columns:repeat(2,1fr)}}
+.band .c{text-align:center;padding:16px}
+.band b{display:block;font:700 34px 'Space Grotesk';color:var(--navy)}
+.band span{font-size:13px;color:var(--mute)}
+.quote{font-size:clamp(20px,3vw,28px);color:var(--navy);min-height:3.6em;transition:opacity .6s;border-inline-start:4px solid var(--cy);padding-inline-start:18px}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.paths{grid-template-columns:1fr}}
+.paths .c:nth-child(1){border-top:4px solid #5aa2ff}
+.paths .c:nth-child(2){border-top:4px solid var(--blue)}
+.paths .c:nth-child(3){border-top:4px solid var(--cy)}
+.paths h3{font:700 22px 'Space Grotesk';color:var(--navy);direction:ltr;text-align:start}
+.paths ul,.list{padding-inline-start:20px;margin:10px 0;color:var(--tx)}
+.paths li{margin-bottom:6px;font-size:15px}
+.mission{border-radius:28px;padding:30px;background:linear-gradient(135deg,rgba(31,107,255,.14),rgba(0,201,214,.14));margin-top:26px;font-size:20px;color:var(--navy)}
+ol.tl{list-style:none;padding:0;border-inline-start:2px solid rgba(31,107,255,.35);margin-inline-start:10px}
+ol.tl li{padding:0 22px 22px;position:relative}
+ol.tl li::before{content:"";position:absolute;inset-inline-start:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+ol.tl b{color:var(--navy)}
+ol.tl .t{font:500 13px 'Space Grotesk';color:#0b6fc2;direction:ltr;display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+img.fit{width:100%;border-radius:22px;display:block}
+form{display:grid;gap:12px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+label{font-size:14px;color:var(--mute);display:grid;gap:4px}
+input,select,textarea{font:inherit;background:#fff;color:var(--navy);border:1px solid rgba(31,107,255,.3);border-radius:10px;padding:10px 12px;width:100%}
+.ck{display:flex;gap:8px;align-items:start;color:var(--tx)}
+.ck input{width:auto;margin-top:7px}
+.msg{padding:12px 16px;border-radius:12px;background:rgba(0,201,214,.15);color:#0a5c59;display:none}
+.msg.err{background:rgba(255,90,90,.15);color:#a31d1d}
+#cardWrap{display:none;margin-top:26px;text-align:center}
+#card{width:420px;height:563px;margin:0 auto 16px;border-radius:32px;background:url(assets/badge.jpg) center/100% 100% no-repeat;position:relative;overflow:hidden;direction:ltr;text-align:start;font-family:'Space Grotesk',sans-serif;color:#0a1c47;box-shadow:0 14px 40px rgba(31,107,255,.22)}
+#card>*{position:absolute}
+#card .ph{left:23px;top:228px;width:137px;height:173px;border-radius:18px;object-fit:cover;background:#dbe8fb}
+#card .f1,#card .f2,#card .f3{display:flex;align-items:center;white-space:nowrap;overflow:hidden}
+#card .f1{left:194px;top:316px;width:194px;height:38px;font-weight:700;font-size:18px;letter-spacing:-.2px}
+#card .f2{left:194px;top:366px;width:164px;height:37px;font-weight:500;font-size:12px;color:#243b6b}
+#card .f3{left:156px;top:438px;width:172px;height:48px;justify-content:center;font-weight:700;font-size:15px;letter-spacing:.4px}
+#card .chip{left:92px;top:392px;transform:translateX(-50%);background:linear-gradient(90deg,#1557e6,#0b8bd0);color:#fff;border:2px solid #fff;border-radius:999px;padding:0 14px;height:26px;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:500;letter-spacing:1.4px;white-space:nowrap;box-shadow:0 4px 12px rgba(31,107,255,.3)}
+#card .chip b{font-size:13px;letter-spacing:.8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chips button{background:transparent;color:var(--tx);border:1px solid rgba(120,170,255,.4);border-radius:999px;padding:6px 16px;cursor:pointer;font:inherit}
+.chips button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+#gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+#gal .c h3{font-size:18px;color:var(--navy)}
+#gal .m{font-size:13px;color:#0b6fc2}
+#gal p{font-size:14px;margin:8px 0}
+.v{background:none;border:1px solid var(--blue);color:var(--blue);border-radius:999px;padding:4px 14px;cursor:pointer;font:inherit}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:8px;border-bottom:1px solid rgba(120,170,255,.2);text-align:start}
+footer{padding:44px 0;background:linear-gradient(180deg,#0a2a6e,#06173f);text-align:center;color:#cfe0ff}footer .ghost{border-color:rgba(255,255,255,.4)}
+footer img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--cy)}
+footer b{display:block;color:#fff;font-size:20px;margin-top:10px}
+#cert{display:none;width:520px;max-width:100%;margin:18px auto;padding:28px;text-align:center;color:#0a1c47;background:linear-gradient(160deg,#fff,#dcebff);border:6px double #1f6bff;border-radius:12px}
+#cert img{height:60px}
+#cert h4{font-size:26px;margin:8px 0}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}header,section,footer{position:relative;z-index:1}.tilt{transition:transform .15s ease-out;will-change:transform}
+
+.aur{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.aur i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:fl 24s ease-in-out infinite alternate}
+.aur i:nth-child(1){width:46vw;height:46vw;background:#7fc4ff;top:-12vw;inset-inline-start:-10vw}
+.aur i:nth-child(2){width:38vw;height:38vw;background:#5ee7f0;top:30vh;inset-inline-end:-12vw;animation-delay:-8s;opacity:.35}
+.aur i:nth-child(3){width:42vw;height:42vw;background:#b9d6ff;bottom:-16vw;inset-inline-start:25vw;animation-delay:-15s}
+.aur::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(31,107,255,.2) 1px,transparent 1px);background-size:30px 30px;-webkit-mask-image:linear-gradient(#000,transparent 80%);mask-image:linear-gradient(#000,transparent 80%)}
+@keyframes fl{to{transform:translate(7vw,6vh) scale(1.18)}}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badges span{background:#fff;border:1px solid rgba(31,107,255,.2);border-radius:999px;padding:3px 14px;font-size:14px;color:var(--navy)}
+#paths .w>h2,#paths .w>.sub,#campaign .w>h2,#campaign .w>.sub,#gain .w>h2,#gain .w>.sub,#me .w>h2,#me .w>.sub,#gallery .w>h2,#gallery .w>.sub,#faq .w>h2,#faq .w>.sub{text-align:center;margin-inline:auto}
+#lf{margin-inline:auto;align-items:end}
+#gallery .chips{justify-content:center}#gallery #sq{display:block;margin-inline:auto}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.g4{grid-template-columns:1fr}}
+.g4 .c{border-top:4px solid var(--blue)}.g4 .c:nth-child(even){border-top-color:var(--cy)}
+.g4 h3{font-size:18px;color:var(--navy);margin-bottom:6px}.g4 p{font-size:15px;color:var(--mute)}
+#campaign img{max-width:980px;margin-inline:auto}
+.narrow{max-width:760px}
+.faq details{background:rgba(255,255,255,.8);border:1px solid rgba(31,107,255,.16);border-radius:14px;padding:4px 18px;margin-bottom:10px}
+.faq summary{cursor:pointer;padding:12px 0;font-weight:700;color:var(--navy)}
+.faq details[open]{box-shadow:0 8px 24px rgba(31,107,255,.12)}
+.faq p{padding-bottom:14px;color:var(--mute)}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+
+#card span{min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+#card .f2{white-space:normal}#card .f2 span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.15}
+.i3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.i3{grid-template-columns:1fr}}
+.i3>div>h3{font:700 18px 'Space Grotesk';color:var(--navy);direction:ltr;text-align:start;margin-bottom:10px}
+.idea{background:rgba(255,255,255,.8);border:1px solid rgba(31,107,255,.16);border-radius:16px;padding:16px 18px;margin-bottom:12px}
+.idea b{display:block;color:var(--navy);margin-bottom:2px}
+.idea p{font-size:14.5px;color:var(--tx)}
+.idea em{display:block;font-style:normal;font-size:13px;color:#0b6fc2;margin-top:6px}
+.cr{display:grid;grid-template-columns:1fr 1.5fr;gap:10px;margin:12px 0}
+.cr div{background:#fff;border:1px solid rgba(31,107,255,.2);border-radius:12px;padding:8px 12px;text-align:center}
+.cr small{display:block;color:var(--mute);font-size:12px}
+.cr span{font:700 22px 'Space Grotesk';color:var(--blue);letter-spacing:1px}
+.gi{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;margin-bottom:10px;background:#dbe8fb}
+.pv{max-width:100%;max-height:160px;border-radius:12px;display:none;margin-top:6px}
+@media(prefers-reduced-motion:reduce){.aur i{animation:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<nav><div class="w"><img src="assets/logo.png" alt="NextStep AI"><div class="l"><a href="#about">الفكرة</a><a href="#paths">المسارات</a><a href="#how">كيف أشارك</a><a href="#gallery">المعرض</a><a href="#me">صفحتي</a><a href="#faq">الأسئلة</a><a class="btn" href="#join">انضم</a></div></div></nav>
+
+<header class="hero"><div class="w">
+ <div class="grid">
+  <div>
+   <p class="tag en">NextStep AI · Community Challenge · 2027 Edition</p>
+   <h1><span class="en">THINK BEFORE AI</span>هل ما زلت تفكر بنفسك؟</h1>
+   <p class="sub">تجربة تفاعلية مدتها 60 دقيقة عبر Google Meet، تنتهي بمعرض رقمي يجمع أفكار المشاركين. التحدي مفتوح للجميع، والحضور المباشر لأول 100 مشارك.</p>
+   <a class="btn" href="#join">انضم إلى التحدي</a><a class="ghost" href="#how">لم أحضر اللقاء؟ افهم التجربة</a>
+   <div class="badges"><span>60 دقيقة</span><span>100 مقعد مباشر</span><span>مفتوح للجميع</span><span>مجاني</span></div>
+  </div>
+  <div class="c pause">
+   <div class="bar" id="ph">اكتب سؤالك للذكاء الاصطناعي…</div>
+   <div class="ring"><svg width="132" height="132" viewBox="0 0 132 132"><circle class="bg" cx="66" cy="66" r="54"/><circle class="fg" id="fg" cx="66" cy="66" r="54"/></svg><b id="sec">5</b></div>
+   <button class="btn" id="ask" disabled>فكّر أولًا…</button>
+   <p id="pq">قبل أن تضغط «أرسل»: ما رأيك أنت؟</p>
+  </div>
+ </div>
+ <div class="band">
+  <div class="c"><b id="s1">–</b><span>مسجّل في التحدي</span></div>
+  <div class="c"><b id="s2">100</b><span>مقعد مباشر متبقٍ</span></div>
+  <div class="c"><b id="s3">–</b><span>مخرج منشور</span></div>
+  <div class="c"><b class="en" id="cd">--:--:--</b><span id="cdl">حتى اللقاء</span></div>
+ </div>
+</div></header>
+
+<section id="about"><div class="w two">
+ <div>
+  <h2>السؤال الذي نختبره</h2>
+  <p class="sub">هل يجعلنا الذكاء الاصطناعي أكثر إبداعًا، أم نعتمد عليه حتى نفقد قدرتنا على التفكير؟ لا نفترض الإجابة. نمنحك مهمة واحدة وثلاث طرق للعمل، وتكتشف الفرق بنفسك.</p>
+  <div class="quote" id="q"></div>
+ </div>
+ <img class="fit" src="assets/poster.png" alt="إعلان THINK BEFORE AI" loading="lazy">
+</div></section>
+
+<section id="paths" class="alt"><div class="w">
+ <h2>ثلاثة مسارات، تحدٍّ واحد</h2>
+ <p class="sub">تنفّذ المسار الذي تختاره خلال 20 دقيقة في اللقاء. بعد التسجيل تختار أحد المسارات، ويمكن طلب تغييره من الإدارة قبل بدء التحدي.</p>
+ <div class="paths">
+  <div class="c"><h3>HUMAN THINKING</h3><p>تفكّر وتبتكر دون أي مساعدة من الذكاء الاصطناعي.</p><ul><li>أنقذ شغف طالب</li><li>جامعة بلا ميزانية</li><li>مشكلة وحل غير تقليدي</li><li>تعليم المستقبل بعد عشر سنوات</li></ul></div>
+  <div class="c"><h3>AI THINKING</h3><p>تستخدم الذكاء الاصطناعي لتوليد الفكرة وتوثّق دوره.</p><ul><li>مدرسة المستقبل</li><li>المعلم الذكي</li><li>تحدي الابتكار</li><li>حل مشكلة طلابية حقيقية</li></ul></div>
+  <div class="c"><h3>HUMAN + AI</h3><p>تبدأ بفكرتك أنت، ثم تطوّرها بمساعدة الذكاء الاصطناعي.</p><ul><li>فكرتي أكبر</li><li>أعد تصميم التعليم</li><li>من مشكلة إلى ابتكار</li><li>مشروع من الصفر</li></ul></div>
+ </div>
+ <div class="mission">«ابتكروا مبادرة تعليمية تساعد طالبًا فقد شغفه بالتعلم على استعادة فضوله وإبداعه، بميزانية صفرية.»<br><small style="font-size:14px;color:var(--mute)">المهمة الموحدة للمسارات الثلاثة. يمكنك أيضًا اختيار فكرتك الخاصة إن ارتبطت بالتعليم أو الإبداع أو التفكير البشري والذكاء الاصطناعي.</small></div>
+</div></section>
+
+<section id="ideas"><div class="w"><h2>أفكار يمكنك المشاركة بها</h2><p class="sub">أمثلة توضّح مستوى الفكرة وشكل المخرج. ليست قيودًا، فاختر منها أو ابتكر فكرتك الخاصة. وإن كانت لديك صورة لفكرتك (رسم أو نموذج أو تصميم) فأضفها في النموذج وستظهر في المعرض.</p><div class="i3">
+<div><h3>HUMAN THINKING</h3><div class="idea"><b>مكتبة الفضول</b><p>ركن مجاني في الجامعة يتبادل فيه الطلاب سؤالًا غريبًا كل يوم، ويُكرَّم أفضل سؤال أسبوعيًا.</p><em>المخرج: خطة المبادرة وملصق</em></div><div class="idea"><b>رفيق المذاكرة</b><p>ثنائيات بين طالب فقد شغفه وزميل يعلّمه ما يحب لمدة أسبوع، بلا أي تكلفة.</p><em>المخرج: خطوات التنفيذ على ورقة</em></div></div>
+<div><h3>AI THINKING</h3><div class="idea"><b>مسار فضول مخصص</b><p>أمر موجّه يبني خطة أسبوعية من خمس تحديات صغيرة حسب اهتمامات الطالب، مع توثيق الأوامر المستخدمة.</p><em>المخرج: الخطة ولقطة من المحادثة</em></div><div class="idea"><b>معلم يسأل ولا يجيب</b><p>تصميم مساعد يطرح أسئلة موجِّهة بدل تقديم الحل الجاهز، ليحفّز الطالب على التفكير.</p><em>المخرج: نص الأمر ومثال حوار</em></div></div>
+<div><h3>HUMAN + AI</h3><div class="idea"><b>حقيبة الشغف</b><p>تبدأ بفكرة صندوق أنشطة منخفض التكلفة، ثم تطوّرها بالذكاء الاصطناعي لتناسب مراحل عمرية مختلفة.</p><em>المخرج: نموذج أولي وصورة</em></div><div class="idea"><b>يوم بلا إجابات جاهزة</b><p>مبادرة طلابية يعمل فيها الجميع أولًا ثم يستعينون بالأداة لتحسين الفكرة بأسئلة نقدية.</p><em>المخرج: ملصق وجدول اليوم</em></div></div>
+</div></div></section>
+
+<section id="gain"><div class="w"><h2>ماذا ستحصل عليه</h2><p class="sub">أربعة مخرجات واضحة تبقى معك بعد انتهاء التحدي.</p><div class="g4"><div class="c"><h3>بطاقة المشاركة الرسمية</h3><p>بطاقتك برقم مشاركة فريد ومسارك واسمك، جاهزة للتحميل والنشر.</p></div><div class="c"><h3>بصمة الإبداع</h3><p>مخرجك في ست خانات: الفكرة والمشكلة والحل وطريقة التفكير ودور الذكاء الاصطناعي والنتيجة.</p></div><div class="c"><h3>الظهور في المعرض</h3><p>يُعرض عملك بعد اعتماده مع رابط منشورك الأصلي، ويمكن للزوار التصويت له.</p></div><div class="c"><h3>شهادة موثوقة</h3><p>تميّز بين الحضور وإتمام التحدي، فلا تُمنح بالتسجيل وحده.</p></div></div></div></section>
+
+<section id="campaign"><div class="w"><h2>حملة الإعلان</h2><p class="sub">تصاميم الحملة التشويقية بالتسلسل الذي ستظهر به قبل اللقاء.</p><img class="fit" src="assets/banners.png" alt="تصاميم حملة THINK BEFORE AI" loading="lazy"></div></section>
+
+<section id="how"><div class="w two">
+ <div>
+  <h2>برنامج اللقاء: 60 دقيقة</h2>
+  <ol class="tl">
+   <li><span class="t">00:00 – 05:00</span><b>الترحيب والافتتاح</b><br>التعريف بـ NextStep AI وبفكرة التحدي.</li>
+   <li><span class="t">05:00 – 12:00</span><b>السؤال الكبير</b><br>هل نستخدم الذكاء الاصطناعي لنتعلم أم لنتجاوز التفكير؟</li>
+   <li><span class="t">12:00 – 15:00</span><b>شرح المهمة</b><br>المطلوب من كل مسار وشكل المخرج.</li>
+   <li><span class="t">15:00 – 35:00</span><b>التحدي المباشر</b><br>20 دقيقة عمل فردي.</li>
+   <li><span class="t">35:00 – 45:00</span><b>شارك تفكيرك</b><br>عرض مخرجات مختارة من المسارات الثلاثة.</li>
+   <li><span class="t">45:00 – 53:00</span><b>نقاش وتأمل</b><br>لو اختفى الذكاء الاصطناعي غدًا، ما المهارة التي تبقى لك؟</li>
+   <li><span class="t">53:00 – 60:00</span><b>انشر وتواصل</b><br>الكاروسيل، المعرض، والصورة الجماعية.</li>
+  </ol>
+ </div>
+ <div>
+  <h2>لم تحضر اللقاء؟ شارك من هنا</h2>
+  <p class="sub">كل ما تحتاجه موجود في الموقع. يمكنك تنفيذ التحدي في أي وقت.</p>
+  <ol class="list">
+   <li>سجّل واختر مسارك، وستحصل على بطاقتك ورمز الدخول.</li>
+   <li>نفّذ المهمة في حدود 20 دقيقة وفق قواعد مسارك.</li>
+   <li>من «صفحتي» أرسل المخرج: اسم الفكرة، المشكلة، الحل، طريقة التفكير، ودور الذكاء الاصطناعي.</li>
+   <li>انشر بطاقتك ومخرجك على LinkedIn أو Instagram بوسم <span class="en">#ThinkBeforeAI</span> وألصق الرابط.</li>
+   <li>بعد اعتماد المراجعة يظهر عملك في المعرض.</li>
+  </ol>
+  <div class="c" style="margin-top:16px"><b style="color:var(--navy)">معايير التقييم</b>
+   <table><tr><td>أصالة الفكرة</td><td>30</td></tr><tr><td>الإبداع والابتكار</td><td>25</td></tr><tr><td>فهم المشكلة وجودة الحل</td><td>20</td></tr><tr><td>القدرة على شرح الفكرة</td><td>15</td></tr><tr><td>الاستخدام الواعي للذكاء الاصطناعي</td><td>10</td></tr></table>
+   <small style="color:var(--mute)">عدم استخدام الذكاء الاصطناعي في المسار الأول ليس نقطة سلبية. التقدير للأعمال: أفكار إبداعية، أفضل تفكير بشري، أفضل تطبيق للذكاء الاصطناعي، أفضل تعاون، واختيار المجتمع.</small>
+  </div>
+ </div>
+</div></section>
+
+<section id="join" class="alt"><div class="w two">
+ <div>
+  <h2>انضم إلى التحدي</h2>
+  <p class="sub">تسجيلك مجاني. ستحصل فورًا على بطاقتك الرسمية، ورقم المشاركة، ورمز سري عشوائي للدخول إلى «صفحتي». مقاعد اللقاء المباشر 100، والتحدي نفسه مفتوح للجميع.</p>
+  <form id="f">
+   <div class="row"><label>الاسم الظاهر<input name="name" required maxlength="60"></label><label>اسم المستخدم<input name="username" required maxlength="30" pattern="[A-Za-z0-9_.\-]+" title="أحرف إنجليزية وأرقام فقط"></label></div>
+   <div class="row"><label>التخصص<input name="major" required></label><label>الجامعة<input name="univ" required></label></div>
+   <div class="row"><label>الدولة<input name="country" required></label><label>رابط LinkedIn (اختياري)<input name="linkedin" type="url" placeholder="https://"></label></div>
+   <label>المسار<select name="path" required><option value="">اختر مسارك</option><option>HUMAN THINKING</option><option>AI THINKING</option><option>HUMAN + AI</option></select></label>
+   <label>صورتك للبطاقة (تبقى على جهازك ولا تُرفع)<input type="file" id="photo" accept="image/*" required></label>
+   <label class="ck"><input type="checkbox" name="live"> أريد حجز مقعد في الحضور المباشر عبر Google Meet</label>
+   <label class="ck"><input type="checkbox" name="consent"> أوافق على ظهور اسمي ومخرجي في معرض المشاركين</label>
+   <button class="btn" id="go">سجّل الآن</button>
+   <div class="msg" id="m1"></div>
+  </form>
+ </div>
+ <div id="cardWrap">
+  <div id="card"><img class="ph" id="cph" alt=""><div class="f1"><span id="cn"></span></div><div class="f2"><span id="cuni"></span></div><div class="f3"><span id="cpath"></span></div><div class="chip">PARTICIPANT <b id="cnum"></b></div></div>
+  <button class="btn" id="dl">حمّل بطاقتي</button>
+  <div class="c" style="margin-top:16px"><b style="color:var(--navy)">بيانات دخولك إلى «صفحتي»</b>
+  <div class="cr"><div><small>رقم المشاركة</small><span id="cnum2"></span></div><div><small>الرمز السري</small><span id="ccode"></span></div></div>
+  <button class="btn" type="button" id="cp" style="padding:8px 22px;font-size:14px">نسخ الرقم والرمز</button>
+  <ul class="list" style="font-size:14px;text-align:start"><li>تحتاج <b>الرقم والرمز معًا</b> لإرسال مخرجك وتحميل شهادتك.</li><li>الرمز عشوائي وسري ولا يمكن استرجاعه، فاحفظه الآن.</li><li>الرقم مكتوب على بطاقتك، أما الرمز فلا تنشره ولا تُظهره في أي صورة.</li></ul><small id="cnote" style="color:var(--mute)"></small></div>
+ </div>
+</div></section>
+
+<section id="me"><div class="w">
+ <h2>صفحتي</h2>
+ <p class="sub">أدخل رقم المشاركة والرمز السري اللذين ظهرا لك بعد التسجيل، لإرسال مخرجك ومتابعة حالته وتحميل شهادتك.</p>
+ <form id="lf" class="row" style="max-width:520px"><label>رقم المشاركة<input name="num" type="number" required></label><label>الرمز<input name="code" required maxlength="12" autocomplete="off" placeholder="XXXXX-XXXXX" dir="ltr"></label><button class="btn">دخول</button></form>
+ <div class="msg" id="m2" style="margin-top:12px"></div>
+ <div id="mine" style="display:none;margin-top:24px" class="two">
+  <form id="of">
+   <h3 style="color:var(--navy)" id="hi"></h3>
+   <label>اسم الفكرة<input name="title" required></label>
+   <label>المشكلة التي تعالجها<textarea name="problem" rows="2" required></textarea></label>
+   <label>الحل الذي ابتكرته<textarea name="solution" rows="3" required></textarea></label>
+   <label>كيف وصلت إليه؟<textarea name="thinking" rows="2" required></textarea></label>
+   <label>دور الذكاء الاصطناعي (إن وُجد)<textarea name="ai" rows="2"></textarea></label>
+   <label>النتيجة (مبادرة، خطة، نموذج، تصميم…)<input name="result" required></label>
+   <label>صورة لفكرتك (اختيارية): رسم أو نموذج أو تصميم<input type="file" id="oimg" accept="image/png,image/jpeg,image/webp"><img class="pv" id="opv" alt=""></label>
+   <label>رابط منشورك على LinkedIn أو Instagram<input name="url" type="url" required placeholder="https://"></label>
+   <button class="btn">أرسل للمراجعة</button>
+  </form>
+  <div><div class="c"><b style="color:var(--navy)">حالة مشاركتك</b><p id="st"></p></div>
+   <div class="c" style="margin-top:14px"><b style="color:var(--navy)">شهادتك</b><p id="cs" class="sub" style="margin:6px 0 12px"></p><button class="btn" id="cb" style="display:none">حمّل الشهادة</button></div></div>
+ </div>
+ <div id="cert"><img src="assets/logo.png" alt=""><h4>شهادة مشاركة</h4><p>تشهد NextStep AI بأن</p><h4 id="certn"></h4><p id="certt"></p><p class="en">THINK BEFORE AI · 2027 Edition</p><p style="font-size:13px">م. أحمد الحايك — مؤسس NextStep AI</p></div>
+</div></section>
+
+<section id="gallery" class="alt"><div class="w">
+ <h2>معرض الإبداع</h2>
+ <p class="sub">أعمال المشاركين المعتمدة. زر أعمالهم، صوّت لما أعجبك، وتواصل مع أصحابها.</p>
+ <div class="chips" id="chips"><button class="on" data-p="">الكل</button><button data-p="HUMAN THINKING">Human Thinking</button><button data-p="AI THINKING">AI Thinking</button><button data-p="HUMAN + AI">Human + AI</button></div>
+ <input id="sq" placeholder="ابحث باسم مشارك أو فكرة" style="max-width:360px;margin-bottom:18px">
+ <div id="gal"></div>
+ <p class="sub" id="ge" style="display:none">لا توجد أعمال معتمدة بعد. كن أول من ينشر فكرته.</p>
+</div></section>
+
+<section id="faq" class="alt"><div class="w narrow"><h2>أسئلة شائعة</h2><p class="sub">إجابات سريعة قبل أن تبدأ.</p><div class="faq"><details><summary>هل المشاركة مجانية؟</summary><p>نعم. التسجيل والتحدي والحضور المباشر مجانية بالكامل.</p></details><details><summary>هل أحتاج إلى خبرة في الذكاء الاصطناعي؟</summary><p>لا. التحدي موجّه للطلاب والخريجين والمهتمين من كل التخصصات، والمهم هو طريقة تفكيرك.</p></details><details><summary>ما الفرق بين الحضور المباشر والمشاركة في التحدي؟</summary><p>الحضور المباشر عبر Google Meet محدود بأول 100 مشارك. أما التحدي فمفتوح للجميع ويمكن تنفيذه من الموقع في أي وقت.</p></details><details><summary>هل يمكنني استخدام الذكاء الاصطناعي في مسار التفكير البشري؟</summary><p>لا أثناء تنفيذ التحدي. وفي المسارين الآخرين وثّق دوره في مخرجك.</p></details><details><summary>هل أستطيع تغيير مساري؟</summary><p>نعم، بطلب إلى الإدارة قبل بدء التحدي.</p></details><details><summary>متى أحصل على الشهادة؟</summary><p>بعد حضور اللقاء المباشر أو اعتماد مخرجك. ادخل إلى «صفحتي» لتحميلها عند استحقاقها.</p></details><details><summary>ماذا يحدث لصورتي وبياناتي؟</summary><p>تبقى صورتك على جهازك وتُستخدم لرسم البطاقة فقط. لا يظهر اسمك ومخرجك في المعرض إلا بموافقتك.</p></details></div></div></section>
+
+<footer><div class="w">
+ <img src="assets/ahmed.jpg" alt="م. أحمد الحايك"><b>م. أحمد الحايك</b>مؤسس NextStep AI
+ <p style="margin-top:12px"><a class="ghost" id="lk" href="#" target="_blank" rel="noopener">حسابي على LinkedIn</a><a class="ghost" id="mt" href="#" target="_blank" rel="noopener">رابط Google Meet</a></p>
+ <p style="margin-top:18px"><a href="#about">الفكرة</a> · <a href="#paths">المسارات</a> · <a href="#join">التسجيل</a> · <a href="#gallery">المعرض</a> · <a href="#faq">الأسئلة</a></p>
+ <p class="en" style="margin-top:12px;font-size:13px">Think. Create. Connect. — Your mind. Your creativity. Your next step.</p>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),C=window.CONFIG;
+const sb=C.SUPABASE_URL&&C.SUPABASE_KEY?supabase.createClient(C.SUPABASE_URL,C.SUPABASE_KEY):null;
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const show=(el,t,err)=>{el.textContent=t;el.className='msg'+(err?' err':'');el.style.display='block'};
+$('#lk').href=C.LINKEDIN;$('#mt').href=C.MEET;
+// لحظة التوقف: فكّر 5 ثوانٍ قبل أن يُفتح زر السؤال
+let s=5;const fg=$('#fg');
+setTimeout(()=>{fg.style.strokeDashoffset=0},50);
+const tk=setInterval(()=>{s--;$('#sec').textContent=s;if(s<=0){clearInterval(tk);$('#sec').textContent='✓';$('#ask').disabled=false;$('#ask').textContent='الآن اسأل، بعد أن فكّرت';$('#pq').textContent='هذه هي الفكرة: فكرتك أولًا، ثم الذكاء الاصطناعي.'}},1000);
+$('#ask').onclick=()=>location.hash='#join';
+// عبارات ملهمة
+const Q=['الذكاء الاصطناعي يجيب خلال ثوانٍ، لكن السؤال الجيد يبدأ منك.','التقنية يجب أن توسّع تفكيرنا، لا أن تحلّ محله.','أفضل استخدام للأداة أن تعرف أولًا ماذا تريد منها.','الفضول مهارة، وتتقوّى كلما استخدمتها.','لو اختفى الذكاء الاصطناعي غدًا، ما الذي سيبقى لك؟'];
+let qi=0;const q=$('#q');q.textContent=Q[0];
+setInterval(()=>{q.style.opacity=0;setTimeout(()=>{qi=(qi+1)%Q.length;q.textContent=Q[qi];q.style.opacity=1},600)},6000);
+// عدّاد اللقاء
+function tick(){const d=new Date(C.EVENT)-Date.now();if(d<=0){$('#cd').textContent='الآن';$('#cdl').textContent='اللقاء مباشر أو انتهى';return}
+ const h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),x=Math.floor(d%6e4/1e3),p=n=>String(n).padStart(2,'0');
+ $('#cd').textContent=(h>=48?Math.floor(h/24)+'d ':'')+p(h>=48?h%24:h)+':'+p(m)+':'+p(x);$('#cdl').textContent=C.EVENT_TEXT}
+tick();setInterval(tick,1000);
+// إحصاءات
+async function stats(){if(!sb)return;const{data}=await sb.rpc('stats');if(data){$('#s1').textContent=data.registered;$('#s2').textContent=Math.max(0,data.seats_left);$('#s3').textContent=data.outputs}}
+stats();
+// التسجيل والبطاقة
+let photoURL='';
+$('#photo').onchange=e=>{const r=new FileReader();r.onload=()=>photoURL=r.result;r.readAsDataURL(e.target.files[0])};
+$('#f').onsubmit=async e=>{e.preventDefault();
+ const f=new FormData(e.target),b=$('#go');b.disabled=true;
+ const demo={data:{num:1,code:[...crypto.getRandomValues(new Uint8Array(5))].map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase(),live:!!f.get('live'),live_requested:!!f.get('live')}};const{data,error}=!sb?demo:await sb.rpc('register',{p_name:f.get('name').trim(),p_username:f.get('username').trim(),p_major:f.get('major'),p_univ:f.get('univ'),p_country:f.get('country'),p_linkedin:f.get('linkedin')||'',p_path:f.get('path'),p_live:!!f.get('live'),p_consent:!!f.get('consent')});
+ b.disabled=false;
+ if(error)return show($('#m1'),error.message.includes('username')?'اسم المستخدم مستخدم من قبل، جرّب اسمًا آخر.':'تعذّر التسجيل. تحقق من البيانات وحاول مرة أخرى.',1);
+ $('#cph').src=photoURL;$('#cn').textContent=f.get('name');$('#cnum').textContent=String(data.num).padStart(4,'0');$('#cpath').textContent=f.get('path');$('#ccode').textContent=data.code.replace(/(.{5})(.{5})/,'$1-$2');$('#cuni').textContent=f.get('major')+' · '+f.get('univ');$('#cnum2').textContent=String(data.num).padStart(4,'0');$('#lf [name=num]').value=data.num;$('#lf [name=code]').value=data.code;
+ $('#cnote').textContent=(data.live?'تم حجز مقعدك في الحضور المباشر.':data.live_requested?'اكتملت المقاعد المباشرة، لكن مشاركتك في التحدي مؤكدة.':'مشاركتك في التحدي مؤكدة.')+' احتفظ برقمك ورمزك السري؛ ستحتاجهما في «صفحتي» ولا يمكن استرجاع الرمز.';
+ $('#cardWrap').style.display='block';$('#card').style.zoom=1;fitFields();document.fonts.ready.then(()=>{fitFields();fit()});$('#cardWrap').scrollIntoView({behavior:'smooth'});e.target.reset();stats()};
+const fit=()=>{$('#card').style.zoom=Math.min(1,$('#cardWrap').clientWidth/420||1)};addEventListener('resize',fit);
+const save=async(el,name)=>{el.style.transform='';const z=el.style.zoom;el.style.zoom=1;const c=await html2canvas(el,{scale:3,useCORS:true,backgroundColor:null});el.style.zoom=z;const a=document.createElement('a');a.download=name;a.href=c.toDataURL('image/png');a.click()};
+$('#dl').onclick=()=>save($('#card'),'think-before-ai-card.png');
+// صفحتي
+let me=null;
+$('#lf').onsubmit=async e=>{e.preventDefault();if(!sb)return show($('#m2'),'لم يتم ربط قاعدة البيانات بعد.',1);
+ const f=new FormData(e.target),{data,error}=await sb.rpc('my_status',{p_num:+f.get('num'),p_code:f.get('code')});
+ if(error&&error.message.includes('locked'))return show($('#m2'),'محاولات كثيرة غير صحيحة. حاول مرة أخرى بعد 15 دقيقة.',1);
+ if(!data)return show($('#m2'),'الرقم أو الرمز غير صحيح.',1);
+ me={num:+f.get('num'),code:f.get('code'),...data};$('#m2').style.display='none';$('#mine').style.display='grid';$('#hi').textContent='أهلًا '+data.name+' · '+data.path;
+ const T={pending:'قيد المراجعة',approved:'معتمد ومنشور في المعرض',rejected:'لم يُعتمد'+(data.reason?': '+data.reason:'')};
+ $('#st').textContent=data.status?'«'+data.title+'»: '+T[data.status]:'لم ترسل مخرجك بعد.';
+ const done=data.status==='approved';
+ $('#cs').textContent=done?'أكملت التحدي وأُعتمد مخرجك.':data.attended?'حضرت اللقاء المباشر. تُمنح شهادة إتمام التحدي بعد اعتماد مخرجك.':'تُمنح الشهادة بعد حضور اللقاء أو اعتماد مخرجك، وليس بالتسجيل وحده.';
+ $('#cb').style.display=(done||data.attended)?'inline-block':'none';
+ $('#certn').textContent=data.name;$('#certt').textContent=done?'أكمل التحدي وأرسل مخرجه الإبداعي في مسار '+data.path:'شارك في اللقاء المباشر لتحدي THINK BEFORE AI'};
+function fitFields(){[['.f1',18,10],['.f2',12,9.5],['.f3',15,10]].forEach(([q,mx,mn])=>{const b=$('#card '+q),sp=b.firstElementChild;let z=mx;b.style.fontSize=z+'px';while((sp.scrollWidth>b.clientWidth||sp.scrollHeight>b.clientHeight)&&z>mn){z-=.5;b.style.fontSize=z+'px'}})}
+$('#cp').onclick=async()=>{const t='رقم المشاركة: '+$('#cnum2').textContent+'\nالرمز السري: '+$('#ccode').textContent;try{await navigator.clipboard.writeText(t);$('#cp').textContent='تم النسخ ✓'}catch(e){$('#cp').textContent='انسخهما يدويًا'}};
+$('#oimg').onchange=e=>{const f=e.target.files[0],v=$('#opv');if(f){v.src=URL.createObjectURL(f);v.style.display='block'}else v.style.display='none'};
+async function shrink(file){const im=await createImageBitmap(file),k=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);return new Promise(r=>c.toBlob(r,'image/jpeg',.82))}
+$('#of').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target),fl=$('#oimg').files[0],b=e.target.querySelector('button.btn');b.disabled=true;let img=null;
+ try{if(fl){if(fl.size>10e6)throw 'big';const blob=await shrink(fl),path=me.num+'-'+crypto.randomUUID()+'.jpg',{error:ue}=await sb.storage.from('outputs').upload(path,blob,{contentType:'image/jpeg'});if(ue)throw ue;img=sb.storage.from('outputs').getPublicUrl(path).data.publicUrl}
+  const{data,error}=await sb.rpc('submit_output',{p_num:me.num,p_code:me.code,p_title:f.get('title'),p_problem:f.get('problem'),p_solution:f.get('solution'),p_thinking:f.get('thinking'),p_ai:f.get('ai')||'',p_result:f.get('result'),p_url:f.get('url'),p_image:img});
+  $('#st').textContent=(error||!data)?'تعذّر الإرسال، حاول مرة أخرى.':'وصل مخرجك'+(img?' مع صورته':'')+' وهو الآن قيد المراجعة.'}
+ catch(x){$('#st').textContent=x==='big'?'حجم الصورة كبير، اختر صورة أقل من 10 ميغابايت.':'تعذّر رفع الصورة، حاول مرة أخرى.'}
+ b.disabled=false};
+$('#cb').onclick=()=>{const c=$('#cert');c.style.display='block';save(c,'think-before-ai-certificate.png').then(()=>c.style.display='none')};
+// المعرض
+let G=[],P='';const voter=localStorage.v||(localStorage.v=crypto.randomUUID());
+async function load(){if(!sb)return draw();const{data}=await sb.from('gallery').select('*').order('votes',{ascending:false});G=data||[];draw()}
+function draw(){const k=$('#sq').value.trim().toLowerCase(),L=G.filter(g=>(!P||g.path===P)&&(!k||(g.name+g.title).toLowerCase().includes(k)));
+ $('#ge').style.display=L.length?'none':'block';
+ $('#gal').innerHTML=L.map(g=>`<div class="c">${g.image_url?`<img class="gi" src="${esc(g.image_url)}" alt="" loading="lazy">`:''}<div class="m en">${esc(g.path)} · #${String(g.num).padStart(4,'0')}</div><h3>${esc(g.title)}</h3><p><b>${esc(g.name)}</b> · ${esc(g.university)} · ${esc(g.country)}</p><p>${esc(g.solution)}</p><p>النتيجة: ${esc(g.result)}</p><p><button class="v" data-id="${g.id}">♥ ${g.votes}</button> <a href="${esc(g.post_url)}" target="_blank" rel="noopener">المنشور</a>${g.linkedin?' · <a href="'+esc(g.linkedin)+'" target="_blank" rel="noopener">LinkedIn</a>':''}</p></div>`).join('')}
+$('#sq').oninput=draw;
+$('#chips').onclick=e=>{if(!e.target.dataset)return;P=e.target.dataset.p??P;document.querySelectorAll('#chips button').forEach(b=>b.classList.toggle('on',b===e.target));draw()};
+$('#gal').onclick=async e=>{const b=e.target.closest('.v');if(!b)return;await sb.rpc('vote',{p_oid:b.dataset.id,p_voter:voter});load()};
+load();
+
+// خلفية ثلاثية الأبعاد تفاعلية
+(()=>{if(!window.THREE||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+const T=THREE,r=new T.WebGLRenderer({canvas:$('#bg'),alpha:true,antialias:true});r.setPixelRatio(Math.min(devicePixelRatio,2));
+const sc=new T.Scene(),cam=new T.PerspectiveCamera(50,1,.1,100);cam.position.z=10;
+sc.add(new T.AmbientLight(0xffffff,.85));const dl=new T.DirectionalLight(0xffffff,.9);dl.position.set(3,5,6);sc.add(dl);
+const pl=new T.PointLight(0x00c9d6,1.4,30);pl.position.set(-4,-2,5);sc.add(pl);
+const gl=c=>new T.MeshStandardMaterial({color:c,metalness:.3,roughness:.2,transparent:true,opacity:.8});
+const wf=c=>new T.MeshBasicMaterial({color:c,wireframe:true,transparent:true,opacity:.4});
+const D=[[new T.TorusKnotGeometry(1,.3,120,16),gl(0x1f6bff),1],[new T.IcosahedronGeometry(1.4,1),wf(0x1f6bff),-1],[new T.OctahedronGeometry(1.1,0),gl(0x00c9d6),1],[new T.TorusGeometry(.9,.26,16,48),gl(0x5aa2ff),-1],[new T.IcosahedronGeometry(1.1,0),wf(0x00a9c0),1],[new T.BoxGeometry(1.3,1.3,1.3),gl(0x7fc4ff),-1],[new T.TorusKnotGeometry(.85,.25,100,12),wf(0x1f6bff),1],[new T.OctahedronGeometry(1.2,0),wf(0x1f6bff),-1]];
+const M=D.map(([g,m,sd],i)=>{const o=new T.Mesh(g,m);o.userData={sd,y:2-i*4.5,sp:.004+i*.0007};sc.add(o);return o});
+const N=160,pa=new Float32Array(N*3);for(let i=0;i<N*3;i+=3){pa[i]=(Math.random()-.5)*30;pa[i+1]=(Math.random()-.5)*18;pa[i+2]=-Math.random()*8}
+const pg=new T.BufferGeometry();pg.setAttribute('position',new T.BufferAttribute(pa,3));
+const pts=new T.Points(pg,new T.PointsMaterial({color:0x1f6bff,size:.07,transparent:true,opacity:.55}));sc.add(pts);
+let mx=0,my=0,cx=0,cy=0,xr=6;
+function rs(){const w=innerWidth,h=innerHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();xr=Math.min(cam.aspect*4.66*(w<700?.9:.88),9.5);const k=w<1100?.6:1;M.forEach(o=>o.scale.setScalar(k))}
+rs();addEventListener('resize',rs);
+addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+(function f(){requestAnimationFrame(f);if(document.hidden)return;
+ cx+=(mx-cx)*.05;cy+=(my-cy)*.05;const sy=scrollY*.0072;
+ M.forEach((o,i)=>{const u=o.userData;o.position.set(u.sd*xr+cx*(i%3+1)*1.2,u.y+sy-cy*(i%3+1)*.8,-(i%3)*1.2);o.rotation.x+=u.sp+cy*.01;o.rotation.y+=u.sp*1.4+cx*.01});
+ pts.rotation.y+=.0007;pts.rotation.x=cy*.15;pts.position.x=cx*1.5;pts.position.y=-cy;
+ pl.position.x=cx*16;pl.position.y=-cy*10;r.render(sc,cam)})();
+})();
+// إمالة ثلاثية الأبعاد عند تمرير المؤشر
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.querySelectorAll('.paths .c,.band .c,.pause,#card').forEach(el=>{el.classList.add('tilt');
+ el.addEventListener('pointermove',e=>{const b=el.getBoundingClientRect(),x=(e.clientX-b.left)/b.width-.5,y=(e.clientY-b.top)/b.height-.5;el.style.transform=`perspective(700px) rotateY(${x*14}deg) rotateX(${-y*14}deg)`});
+ el.addEventListener('pointerleave',()=>el.style.transform='')});
+</script>
+</body>
+</html>

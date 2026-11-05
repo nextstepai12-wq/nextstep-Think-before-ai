@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>لوحة الإدارة — THINK BEFORE AI</title>
+<link rel="icon" href="assets/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#071a44;--blue:#1f6bff;--cy:#00c9d6;--tx:#12306b;--mute:#4a6a9c}
+*{box-sizing:border-box;margin:0}
+body{font-family:'IBM Plex Sans Arabic',sans-serif;background:linear-gradient(180deg,#fff,#e6f3ff 60%,#d6eaff);min-height:100vh;color:var(--tx);line-height:1.7;padding:20px}
+.w{max-width:1100px;margin:auto}
+.c{background:rgba(255,255,255,.85);border:1px solid rgba(31,107,255,.16);box-shadow:0 10px 30px rgba(31,107,255,.1);border-radius:20px;padding:22px;margin-bottom:16px}
+h1,h2{color:var(--navy)}
+input,textarea{font:inherit;background:#fff;color:var(--navy);border:1px solid rgba(31,107,255,.3);border-radius:10px;padding:10px 12px;width:100%;margin-bottom:10px}
+button{font:inherit;font-weight:700;background:linear-gradient(90deg,#1557e6,#0b8bd0);color:#fff;border:0;border-radius:999px;padding:8px 20px;cursor:pointer}
+button.s{background:transparent;color:var(--tx);border:1px solid rgba(31,107,255,.4);padding:4px 12px;font-weight:400}
+button.d{border-color:#e05555;color:#b62b2b}
+:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.top img{height:42px}
+.top button{margin-inline-start:auto}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tabs button.on{background:var(--blue);color:#fff}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+td,th{padding:8px;border-bottom:1px solid rgba(31,107,255,.15);text-align:start;vertical-align:top}
+.k{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+@media(max-width:700px){.k{grid-template-columns:repeat(2,1fr)}}
+.k div{background:rgba(255,255,255,.85);border:1px solid rgba(31,107,255,.16);border-radius:16px;padding:14px;text-align:center}
+.k b{display:block;font-size:28px;color:var(--navy)}
+.err{color:#b62b2b}
+</style>
+</head>
+<body>
+<div class="w">
+ <div id="login" class="c" style="max-width:420px;margin:12vh auto">
+  <h1 style="font-size:24px">دخول الإدارة</h1><p style="color:var(--mute);margin-bottom:14px">THINK BEFORE AI · NextStep AI</p>
+  <form id="lf"><input type="email" name="e" placeholder="البريد الإلكتروني" required autocomplete="username"><input type="password" name="p" placeholder="كلمة المرور" required autocomplete="current-password"><button>دخول</button><p class="err" id="le"></p></form>
+ </div>
+ <div id="app" style="display:none">
+  <div class="top"><img src="assets/logo.png" alt=""><h1 style="font-size:22px">لوحة الإدارة</h1><button class="s" id="out">خروج</button></div>
+  <div class="k"><div><b id="k1">0</b>مسجّلون</div><div><b id="k2">0</b>مقاعد مباشرة محجوزة</div><div><b id="k3">0</b>مخرجات للمراجعة</div><div><b id="k4">0</b>مخرجات معتمدة</div></div>
+  <div class="tabs"><button class="on" data-t="p">المشاركون</button><button class="s" data-t="o">المخرجات</button><button class="s" id="csv">تصدير Excel (CSV)</button></div>
+  <div class="c scroll" id="box"></div>
+ </div>
+</div>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),C=window.CONFIG;
+const sb=supabase.createClient(C.SUPABASE_URL||'https://x.supabase.co',C.SUPABASE_KEY||'x');
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let P=[],O=[],tab='p';
+async function init(){const{data:{session}}=await sb.auth.getSession();if(session){$('#login').style.display='none';$('#app').style.display='block';load()}}
+$('#lf').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target);
+ if(!C.SUPABASE_URL)return $('#le').textContent='اضبط config.js أولًا.';
+ const{error}=await sb.auth.signInWithPassword({email:f.get('e'),password:f.get('p')});
+ if(error)return $('#le').textContent='البريد أو كلمة المرور غير صحيحة.';init()};
+$('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
+async function load(){
+ [P,O]=await Promise.all([sb.from('participants_ai').select('*').order('num').then(r=>r.data||[]),sb.from('outputs').select('*,participants_ai(name,num,path)').order('created_at',{ascending:false}).then(r=>r.data||[])]);
+ $('#k1').textContent=P.length;$('#k2').textContent=P.filter(x=>x.live).length;$('#k3').textContent=O.filter(x=>x.status==='pending').length;$('#k4').textContent=O.filter(x=>x.status==='approved').length;draw()}
+function draw(){
+ if(tab==='p')$('#box').innerHTML='<table><tr><th>#</th><th>الاسم</th><th>المسار</th><th>الجامعة / الدولة</th><th>مباشر</th><th>حضر</th><th>ظهور</th><th></th></tr>'+P.map(x=>`<tr><td>${x.num}</td><td>${esc(x.name)}<br><small>@${esc(x.username)}</small></td><td>${esc(x.path)}</td><td>${esc(x.university)} · ${esc(x.country)}</td><td>${x.live?'نعم':'لا'}</td><td><button class="s" data-a="att" data-id="${x.id}">${x.attended?'نعم ✓':'تسجيل الحضور'}</button></td><td>${x.consent?'موافق':'لا'}</td><td><button class="s d" data-a="del" data-id="${x.id}">حذف</button></td></tr>`).join('')+'</table>';
+ else $('#box').innerHTML='<table><tr><th>المشارك</th><th>الفكرة</th><th>المحتوى</th><th>الحالة</th><th></th></tr>'+O.map(x=>`<tr><td>#${x.participants_ai?.num} ${esc(x.participants_ai?.name)}<br><small>${esc(x.participants_ai?.path)}</small></td><td>${esc(x.title)}<br><a href="${esc(x.post_url)}" target="_blank" rel="noopener" style="color:var(--blue)">المنشور</a></td><td><small>${esc(x.problem)}<br>${esc(x.solution)}<br>${esc(x.thinking)}<br>الذكاء الاصطناعي: ${esc(x.ai_role)}<br>النتيجة: ${esc(x.result)}${x.image_url?'<br><a href="'+esc(x.image_url)+'" target="_blank" rel="noopener" style="color:var(--blue)">الصورة</a>':''}</small></td><td>${esc(x.status)}${x.reason?'<br><small>'+esc(x.reason)+'</small>':''}</td><td><button class="s" data-a="ok" data-id="${x.id}">اعتماد</button> <button class="s d" data-a="no" data-id="${x.id}">رفض</button></td></tr>`).join('')+'</table>'}
+$('.tabs').onclick=e=>{const b=e.target.closest('button[data-t]');if(!b)return;tab=b.dataset.t;document.querySelectorAll('.tabs [data-t]').forEach(x=>x.className=x===b?'on':'s');draw()};
+$('#box').onclick=async e=>{const b=e.target.closest('button[data-a]');if(!b)return;const id=b.dataset.id,a=b.dataset.a;
+ if(a==='att'){const p=P.find(x=>x.id===id);await sb.from('participants_ai').update({attended:!p.attended}).eq('id',id)}
+ if(a==='del'){if(!confirm('حذف المشارك ومخرجه نهائيًا؟'))return;await sb.from('participants_ai').delete().eq('id',id)}
+ if(a==='ok')await sb.from('outputs').update({status:'approved',reason:null}).eq('id',id);
+ if(a==='no'){const r=prompt('سبب الرفض (يظهر للمشارك):');if(r===null)return;await sb.from('outputs').update({status:'rejected',reason:r}).eq('id',id)}
+ load()};
+$('#csv').onclick=()=>{const h=['num','name','username','major','university','country','linkedin','path','live','attended','consent'];
+ const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+ const t='\ufeff'+h.join(',')+'\n'+P.map(x=>h.map(k=>q(x[k])).join(',')).join('\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv'}));a.download='participants.csv';a.click()};
+init();
+</script>
+</body>
+</html>
